@@ -1,18 +1,11 @@
-# Salesforce DX Project: Next Steps
+# Revoke Mobile OAuth Tokens
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+When releasing the configurations and customizations for the Salesforce Field Service mobile app as part of a release, the users need to clear the metadata and restart the app to retrieve the new version of the metadata and Lightning Web Components (LWC). Another option is to logout and login again. This repository contains code that forces the users to login again as it revokes the OAuth tokens.
 
-## How Do You Plan to Deploy Your Changes?
+# Use
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+revokeTokenUtil.forceAppLogoutForAllUsers('Name Of The App');
 
-## Configure Your Salesforce DX Project
+# Special Thanks
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+Thank you Leonardo Berardino for developing the Apex Mocking Framework: https://github.com/gscloudsolutions/GS-Apex-Mocking-Framework
