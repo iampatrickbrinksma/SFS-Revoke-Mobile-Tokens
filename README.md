@@ -8,4 +8,4 @@ revokeTokenUtil.forceAppLogoutForAllUsers('Name Of The App');
 
 # Special Thanks
 
-Thank you Leonardo Berardino for developing the Apex Mocking Framework: https://github.com/gscloudsolutions/GS-Apex-Mocking-Framework
+Thank you Leonardo Berardino for developing the Apex Mocking Framework: https://github.com/gscloudsolutions/GS-Apex-Mocking-Framework, so I could create Apex Test Class in an easy way.
