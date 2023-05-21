@@ -9,7 +9,7 @@ When releasing the configurations and customizations for the Salesforce Field Se
 - Search all entries in the OAuthToken object for the given connected app
 - Enqueue a queueable Apex class to delete the tokens one by one
 - For each entry call the revoke token endpoint (```/services/oauth2/revoke?token=<DeleteToken>```)
-- When a CallException is thrown enqueue the same queueable class again with the remaining tokens (chaining)
+- When a CallException is thrown enqueue the same queueable class again with the remaining tokens (chaining). This will typically happen when there are a lot of token (each token = 1 call), so the governor limits of maximum number of callouts or maximum aggregated duration of callouts will be violated.  
 
 # Use
 
