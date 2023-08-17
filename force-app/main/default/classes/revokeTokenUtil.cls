@@ -3,10 +3,19 @@ public with sharing class revokeTokenUtil {
     @TestVisible
     private static revokeTokenSelector revokeTokenSelector = new revokeTokenSelector();
 
-    public static void forceAppLogoutForAllUsers(String appName){
+    public static void forceAppLogoutForAllUsers(List<String> appNames){
+        forceAppLogoutForAllUsers(appNames, false);
+    }
+
+    public static void forceAppLogoutForAllUsers(List<String> appNames, Boolean useBatch){
         revokeTokenQueueable q = new revokeTokenQueueable();
-        q.tokens = revokeTokenSelector.getTokens(appName);
-        System.enqueueJob(q);
+        if (useBatch){
+            q.tokens = revokeTokenSelector.getTokens(appNames);
+            System.enqueueJob(q);
+        } else {
+            revokeTokenBatch b = new revokeTokenBatch(appNames);
+            Database.executeBatch(b, 1);            
+        }
     }
 
     public static Boolean revokeTokenForUser(String deleteToken){

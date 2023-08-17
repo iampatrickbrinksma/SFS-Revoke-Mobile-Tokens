@@ -1,6 +1,6 @@
 public inherited sharing class revokeTokenSelector {
 
-    public List<OAuthToken> getTokens(String appName){
+    public List<OAuthToken> getTokens(List<String> appNames){
         return [
             select 
                 Id,  
@@ -11,7 +11,7 @@ public inherited sharing class revokeTokenSelector {
             from 
                 OauthToken 
             where 
-                AppName =:appName
+                AppName in :appNames
         ];
     } 
 
