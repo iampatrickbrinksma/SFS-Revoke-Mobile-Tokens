@@ -15,13 +15,19 @@ When releasing a new version of your specific configurations and customizations 
 
 Deploy code to Salesforce sandbox environment first to perform proper testing!
 Apex test class included so it can be deployed to production.
+
+To revoke all tokens for a Connected App, run the following Anonymous Apex:
 ```
 revokeTokenUtil.forceAppLogoutForAllUsers('Name Of The App');
 ```
-Specific for the SFS mobile app:
+Specific for the SFS mobile app for both iOS and Android:
 ```
 revokeTokenUtil.forceAppLogoutForAllUsers('Salesforce Field Service for iOS');
 revokeTokenUtil.forceAppLogoutForAllUsers('Salesforce Field Service for Android');
+```
+If you are using this in a Trial, Developer or Scratch org, use the following as it will run as a Apex Batch job:
+```
+revokeTokenUtil.forceAppLogoutForAllUsers('Name Of The App', true);
 ```
 
 
