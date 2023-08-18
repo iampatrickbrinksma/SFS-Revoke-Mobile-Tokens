@@ -10,11 +10,11 @@ public with sharing class revokeTokenUtil {
     public static void forceAppLogoutForAllUsers(List<String> appNames, Boolean useBatch){
         revokeTokenQueueable q = new revokeTokenQueueable();
         if (useBatch){
-            q.tokens = revokeTokenSelector.getTokens(appNames);
-            System.enqueueJob(q);
-        } else {
             revokeTokenBatch b = new revokeTokenBatch(appNames);
-            Database.executeBatch(b, 1);            
+            Database.executeBatch(b, 1); 
+        } else {
+            q.tokens = revokeTokenSelector.getTokens(appNames);
+            System.enqueueJob(q);           
         }
     }
 

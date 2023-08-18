@@ -1,14 +1,16 @@
-public with sharing class revokeTokenBatch implements Database.Batchable<SObject>, Database.AllowsCallouts {
+public with sharing class revokeTokenBatch implements Database.Batchable<SObject>, Database.Stateful, Database.AllowsCallouts {
 
-    private String query = 'select Id, UserId, AppName, LastUsedDate, DeleteToken from OauthToken where AppName IN (\'';
+    @TestVisible
+    private revokeTokenSelector revokeTokenSelector = new revokeTokenSelector();
+
+    private List<String> appNames;
 
     public revokeTokenBatch(List<String> appNames){
-        this.query += String.join(appNames, '\',\'') + '\')';
+        this.appNames = appNames;
     }
 
-    public Database.QueryLocator start(Database.BatchableContext BC) {        
-        System.debug(query);
-        return Database.getQueryLocator(query);
+    public System.Iterable<SObject> start(Database.BatchableContext BC) {        
+        return revokeTokenSelector.getTokens(appNames);
     }
 
     public void execute(Database.BatchableContext BC, List<sObject> listOfObj) {
