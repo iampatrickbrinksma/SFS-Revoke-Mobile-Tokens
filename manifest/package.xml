@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>IMockerProvider</members>
+        <members>Mocker</members>
+        <members>MockerException</members>
+        <members>MockerUtils</members>
+        <members>MockProvider</members>
         <members>revokeTokenBatch</members>
-        <members>revokeTokenUtil</members>
+        <members>revokeTokenCalloutMock</members>
+        <members>revokeTokenQueueable</members>
         <members>revokeTokenSelector</members>
+        <members>revokeTokenTests</members>
+        <members>revokeTokenUtil</members>
         <name>ApexClass</name>
     </types>
     <version>56.0</version>
